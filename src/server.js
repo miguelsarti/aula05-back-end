@@ -52,12 +52,19 @@ app.get("/", (req, res) => {
     return res.status(200).send({ message: "Hello, World!" });
   });
 
-  app.get("/emocoes", (req, res) => {
-    return res.status(200).send(emocoes);
-  });
-  
-app.get("/2tds2", (req, res) => {
+  app.get("/2tds2", (req, res) => {
     return res.status(200).send({ message: "Hello, World!" });
+  });
+
+  app.post("/emocoes", (req, res) => {
+    const {nome, cor} = req.body
+    const newEmotion = {
+      id: emocoes.length + 1,
+      nome: nome,
+      cor: cor
+    }
+    emocoes.push(newEmotion)
+    return res.status(200).send(emocoes);
   });
 
   app.get("/personagens", (req, res) => {
