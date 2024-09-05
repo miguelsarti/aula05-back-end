@@ -1,12 +1,15 @@
 import express from "express";
 import { config } from "dotenv";
 
+import routes from "./routes/index.routes.js";
+
 config();
 
 const serverPort = process.env.PORT || 3000;
 
 const app = express();
 app.use(express.json());
+app.use(routes);
 
 const emocoes = [
   {
@@ -47,14 +50,6 @@ const personagens = [
     vivo: true  
   }
 ]
-
-app.get("/", (req, res) => {
-    return res.status(200).send({ message: "Hello, World!" });
-  });
-
-  app.get("/2tds2", (req, res) => {
-    return res.status(200).send({ message: "Hello, World!" });
-  });
 
   app.post("/emocoes", (req, res) => {
     const {nome, cor} = req.body
