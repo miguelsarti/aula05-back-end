@@ -65,7 +65,6 @@ const personagens = [
   app.get("/personagens", (req, res) => {
     return res.status(200).send(personagens);
   });
-
 app.listen(serverPort, () => {
   console.log(`⚡ Server started on http://localhost:${serverPort}`);
 });
